@@ -16,3 +16,11 @@ header {
 strong {
     font-size: x-large;
 }
+
+form {
+    margin-bottom: 15px;
+}
+
+#recents {
+    max-height: 150px;
+}

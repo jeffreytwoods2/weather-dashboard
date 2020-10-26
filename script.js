@@ -24,15 +24,17 @@ btn.on('click', function (event) {
 
     searchTerms = $("input").val();
     searchHist.push(searchTerms);
+    $("#recents").empty();
 
     for (i = 0; i < searchHist.length; i++) {
+
         var newCard = $("<div>");
         newCard.addClass("card");
         newCard.attr({
-            style: "padding: 10px;",
-            onclick: "populateData()"
+            style: "padding: 10px; background-color: rgba(0,0,0,.03); margin-top: 5px;",
+            onclick: "histSearch(event)"
         });
-        newCard.text(searchTerms);
+        newCard.text(searchHist[i]);
         $("#recents").append(newCard)
     };
     
@@ -62,9 +64,49 @@ function populateData () {
             method: "GET"
         }).then(function (response) {
             console.log(response);
-            tempEl.append(" " + response.current.temp.toFixed(0));
+            tempEl.append(" " + response.current.temp.toFixed(0) + "° F");
             humEl.append(" " + response.current.humidity + "%");
             windEl.append(" " + response.current.wind_speed.toFixed(1) + " mph");
+            uvColorEl.append(response.current.uvi.toFixed(1));
+            
+            if (response.current.uvi.toFixed(1) < 6) {
+                uvColorEl.attr("style", "background-color: yellow;")
+            } else if (response.current.uvi.toFixed(1) < 8) {
+                uvColorEl.attr("style", "background-color: orange;")
+            } else {
+                uvColorEl.attr("style", "background-color: red;")
+            };
+            
+        });
+    });
+};
+
+
+function histSearch (event) {
+    var urlSearch = event.target.innerHTML.trim();
+
+    tempEl.empty();
+    humEl.empty();
+    windEl.empty();
+    uvColorEl.empty();
+
+    $.ajax({
+        url: "http://www.mapquestapi.com/geocoding/v1/address?key=jHLf4uATR4fijVkLOmrimhIJE79Xp0kx&location=" + urlSearch,
+        method: "GET"
+    }).then(function (response) {
+        lat = response.results[0].locations[0].latLng.lat;
+        long = response.results[0].locations[0].latLng.lng;
+        city = response.results[0].locations[0].adminArea5;
+        cityEl.text(city);
+        
+        $.ajax({
+            url: "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + long + "&units=imperial&appid=38620143f0feedbee7c963b8f6742cad",
+            method: "GET"
+        }).then(function (response) {
+            console.log(response);
+            tempEl.append(" " + response.current.temp.toFixed(0) + "° F");
+            humEl.append(" " + response.current.humidity + "%");
+            windEl.append(" " + response.current.wind_speed.toFixed(0) + " mph");
             uvColorEl.append(response.current.uvi.toFixed(1));
             
             if (response.current.uvi.toFixed(1) < 6) {

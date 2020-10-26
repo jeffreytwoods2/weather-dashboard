@@ -17,18 +17,20 @@
     <main class="container">
         <div class="row">
 
-            <div class="col-md-4">
-                <div class="card">
+            <div class="col-md-6">
+                <div id="search-card" class="card">
                     <div class="card-header">
                         <h2>Search city and state/country:</h2>
                     </div>
                 
 
-                    <div class="card-body container">
+                    <div class="card-body container overflow-auto">
                         <form class="form-inline my-2 my-lg-0">
                             <input class="form-control mr-sm-2" type="text" placeholder="Morristown, NJ" aria-label="Search">
                             <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
                         </form>
+
+                        <hr>
 
                         <div id="recents"></div>
                     </div>
@@ -36,7 +38,7 @@
                 </div>
             </div>
 
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <div class="card">
                     
                     <div class="card-header">
