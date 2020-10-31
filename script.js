@@ -69,7 +69,7 @@ function populateData () {
     humRow.empty();
 
     $.ajax({
-        url: "http://www.mapquestapi.com/geocoding/v1/address?key=jHLf4uATR4fijVkLOmrimhIJE79Xp0kx&location=" + urlSearch,
+        url: "https://www.mapquestapi.com/geocoding/v1/address?key=jHLf4uATR4fijVkLOmrimhIJE79Xp0kx&location=" + urlSearch,
         method: "GET"
     }).then(function (response) {
         lat = response.results[0].locations[0].latLng.lat;
@@ -87,7 +87,7 @@ function populateData () {
             windEl.append(" " + response.current.wind_speed.toFixed(1) + " mph");
             uvColorEl.append(response.current.uvi.toFixed(1));
             // The @2x at the end here is optional, uses bigger icon, very useful for higher-res icons
-            iconEl.attr("src", "http://openweathermap.org/img/wn/" + response.current.weather[0].icon + "@2x.png")
+            iconEl.attr("src", "https://openweathermap.org/img/wn/" + response.current.weather[0].icon + "@2x.png")
             
             // This sets the color of the UV index based on intensity
             if (response.current.uvi.toFixed(1) < 6) {
@@ -110,7 +110,7 @@ function populateData () {
                 var humTD = $("<td>");
                 newHead.text((d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear());
                 forecastDates.append(newHead);
-                icon.attr("src", "http://openweathermap.org/img/wn/" + response.daily[i - 1].weather[0].icon + ".png");
+                icon.attr("src", "https://openweathermap.org/img/wn/" + response.daily[i - 1].weather[0].icon + ".png");
                 iconTD.html(icon);
                 iconRow.append(iconTD);
                 tempTD.html(response.daily[i - 1].temp.day.toFixed(0) + "° F");
