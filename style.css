@@ -21,6 +21,15 @@ form {
     margin-bottom: 15px;
 }
 
+/* Max height before content stops expanding downward and receives a scroll bar */
 #recents {
     max-height: 150px;
+}
+
+.col-xs {
+    background-color: #eeeeee;
+}
+
+#forecast-title {
+    margin-bottom: 15px;
 }

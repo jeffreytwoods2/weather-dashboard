@@ -14,6 +14,7 @@
         <h1>Weather Dashboard</h1>
     </header>
 
+    <!--All rows wrapped in container to keep page centered/reponsive-->
     <main class="container">
         <div class="row">
 
@@ -24,9 +25,10 @@
                     </div>
                 
 
+                    <!--Class=overflow so that search history doesn't extend downward indefinitely-->
                     <div class="card-body container overflow-auto">
                         <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="text" placeholder="Morristown, NJ" aria-label="Search">
+                            <input id="input-field" class="form-control mr-sm-2" type="text" placeholder="City, State" aria-label="Search">
                             <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
                         </form>
 
@@ -46,7 +48,7 @@
                     </div>
 
                     <div class="card-body">
-                        <strong><span id="city-el"></span> <span id="date-el"></span></strong> <span id="icon-el"></span>
+                        <strong><span id="city-el"></span> <span id="date-el"></span></strong> <img id="icon-el"></img>
 
                         <p style="margin-top: 15px;">Temperature:<span id="temp-el"></span></p>
 
@@ -63,16 +65,28 @@
 
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
+                <div class="card" id="forecast-title">
                     <div class="card-header">5-Day Forecast</div>
-                    
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-xs"></div>
-                        </div>
-                    </div>
                 </div>
             </div>
+        </div>
+
+        <!--table-responsive wrapper makes easy horizontal scroll-->
+        <div class="table-responsive">
+            <table class="table table-bordered text-center">
+                <thead>
+                <tr id="forecast-dates">
+                </tr>
+                </thead>
+                <tbody>
+                <tr id="icon-row">
+                </tr>
+                <tr id="temp-row">
+                </tr>
+                <tr id="hum-row">
+                </tr>
+                </tbody>
+            </table>
         </div>
     </main>
 
