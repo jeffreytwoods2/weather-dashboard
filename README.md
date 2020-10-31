@@ -1,4 +1,5 @@
 # weather-dashboard
+https://jeffreytwoods2.github.io/weather-dashboard/
 
 ## Overview:
 A weather app that displays a city's current weather, its 5-day forecast,
@@ -27,8 +28,8 @@ This was done because various buttons/elements needed to be able to populate wea
 
 ## Screencaps:
 
-![Page has been reloaded and Boise's weather reappears, since it was last city searched.](screencaps/cap-1.png);
+![Page has been reloaded and Boise's weather reappears, since it was last city searched.](screencaps/cap-1.png)
 
-![Search history is shown building up here](screencaps/cap-2.png);
+![Search history is shown building up here](screencaps/cap-2.png)
 
-![5-day forecast table shown here](screencaps/cap-3.png);
+![5-day forecast table shown here](screencaps/cap-3.png)
