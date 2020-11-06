@@ -98,17 +98,18 @@ function populateData () {
                 uvColorEl.attr("style", "background-color: red;")
             };
 
-            for (i = 1; i < 6; i++) {
+            for (let i = 1; i < 6; i++) {
                 // This method of setting the date makes sure that all dates and months are updated automatically,
                 // eg. it makes sure that there is no February 30th ever,
                 // that Dec 31st + 1 = Jan 1st, etc.
-                d.setDate(d.getDate() + 1);
+                let newDate = new Date();
+                newDate.setDate(newDate.getDate() + i);
                 var newHead = $("<th>");
                 var icon = $("<img>");
                 var iconTD = $("<td>");
                 var tempTD = $("<td>");
                 var humTD = $("<td>");
-                newHead.text((d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear());
+                newHead.text((newDate.getMonth() + 1) + "/" + newDate.getDate() + "/" + newDate.getFullYear());
                 forecastDates.append(newHead);
                 icon.attr("src", "https://openweathermap.org/img/wn/" + response.daily[i - 1].weather[0].icon + ".png");
                 iconTD.html(icon);
@@ -118,6 +119,7 @@ function populateData () {
                 humTD.html("Humidity: " + response.daily[i - 1].humidity + "%");
                 humRow.append(humTD);
             };
+
 
             // The last search is stored locally, used at loadLastSearch
             localStorage.setItem("history", urlSearch);
